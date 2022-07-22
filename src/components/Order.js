@@ -1,5 +1,5 @@
 import React from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 const containerVariants = {
     hidden: { x: "100vw", opacity: 0 },
@@ -14,6 +14,7 @@ const containerVariants = {
             staggerChildren: 0.4,
         },
     },
+    exit: { x: "-100vw", transition: { ease: "easeInOut" } },
 };
 
 const childVariants = {
@@ -30,6 +31,7 @@ const Order = ({ pizza }) => {
             variants={containerVariants}
             initial="hidden"
             animate="visible"
+            exit="exit"
         >
             <h2>Thank you for your order :)</h2>
             <motion.p variants={childVariants}>
