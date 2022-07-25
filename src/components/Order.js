@@ -1,5 +1,5 @@
-import React from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
 
 const containerVariants = {
     hidden: { x: "100vw", opacity: 0 },
@@ -24,7 +24,12 @@ const childVariants = {
     visible: { opacity: 1 },
 };
 
-const Order = ({ pizza }) => {
+const Order = ({ pizza, setShowModal }) => {
+    // useEffect lifecycle hook, array with only setShowModal as dep
+    useEffect(() => {
+        setTimeout(() => setShowModal(true), 5000);
+    }, [setShowModal]);
+
     return (
         <motion.div
             className="container order"
